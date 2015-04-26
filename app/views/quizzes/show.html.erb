@@ -1,0 +1,26 @@
+<%= render 'shared/content_title', title: 'Input the Correct Answers' %>
+
+  <div class='well'>
+    <p>
+        Quiz Category: <%= @quiz.category %>
+    </br>
+    <%= form_for [@quiz, @user_quiz] do |f| %>
+      <% @quiz.questions.each do |question| %>
+        <%= f.fields_for :user_answers, :html => {:class => "form-horizontal"} do |answers_form| %>
+          <div class='form-group'>
+            </br>
+            <%= answers_form.label question.question, class: "col-md-5 control-label" %>
+            <div class="col-md-4">
+            <%= answers_form.text_field :answer, class: "form-control" %>
+            </div>
+            <div class="col-md-3"></div>
+            <%= answers_form.hidden_field :question_id, :value => question.id %>
+            </div>
+        <% end %>
+      <% end %>
+    </br>
+      <%= f.submit "Submit quiz", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</br>
+

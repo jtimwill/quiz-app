@@ -1,0 +1,14 @@
+<%= render 'shared/content_title', title: 'Pick a Quiz!' %>
+
+<% @quiz.each do |quiz| %>
+<%= link_to quiz_path(quiz) do %>
+  <div class=' btn btn-default btn-lg btn-block'>
+    <p>
+        Quiz Category: <%= quiz.category %>
+    </br>
+        Number of Questions: <%= quiz.questions.size %>
+  </div>
+  </br>
+  <% end %>
+<% end %>
+

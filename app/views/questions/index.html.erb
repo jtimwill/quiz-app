@@ -1,0 +1,19 @@
+<%= render 'shared/content_title', title: 'All Questions' %>
+
+<div class='nav_item'>
+  <%= link_to 'New Question', new_question_path, class: 'btn btn-primary' %>
+</div>
+
+</br>
+
+<% @question.each do |question| %>
+<%= link_to edit_quiz_path(question) do %>
+  <div class=' btn btn-default btn-lg btn-block'>
+    <p>
+        Question: <%= question.question %>
+    </br>
+        Answer: <%= question.answer %>
+  </div>
+  </br>
+  <% end %>
+<% end %>

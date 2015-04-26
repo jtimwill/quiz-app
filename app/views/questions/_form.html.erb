@@ -1,0 +1,15 @@
+<%= render 'shared/errors', obj: @question %>
+
+<div class='well'>
+  <%= form_for @question do |f| %>
+    <div class='control-group'>
+      <%= f.label :Question %>
+      <%= f.text_field :question %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :Answer %>
+      <%= f.text_field :answer%>
+    </div>
+    <%= f.submit(@question.new_record? ? 'Create Question' : 'Update Question', class: 'btn btn-primary')%>
+  <% end %>
+</div>
