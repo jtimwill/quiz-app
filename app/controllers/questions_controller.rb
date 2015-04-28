@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :set_question, only: [:show, :edit, :update]
   before_action :require_admin
 
   def index
@@ -28,16 +29,20 @@ class QuestionsController < ApplicationController
   end 
 
   def update
-    @question = Question.find(params[:id])
-    if @question.update(post_params)
+   
+    if @question.update(question_params)
       flash[:notice] = "The question was updated"
-      redirect_to question_path(@question)
+      redirect_to questions_path
     else
       render :edit
     end
   end 
 
   private
+
+  def set_question
+    @question = Question.find(params[:id])
+  end
 
   def question_params
     params.require(:question).permit(:question, :answer)

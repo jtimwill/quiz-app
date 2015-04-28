@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     resources :user_quizzes, only: [:new, :create, :show, :index] 
   end
   
-  resources :questions, only: [:index, :show, :new, :create]
+  resources :questions
   # resources :user_answers, only: [:new, :create]
-
 end
