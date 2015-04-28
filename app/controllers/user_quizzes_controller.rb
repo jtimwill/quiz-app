@@ -1,8 +1,12 @@
 class UserQuizzesController < ApplicationController
 
   def create
-    @quiz = Quiz.find(params[:quiz_id])
+    @quiz = Quiz.find_by slug: params[:quiz_id]
+
     @user_quiz = @quiz.user_quizzes.build(user_quiz_params)
+
+    
+
     @user_quiz.user_id = current_user.id
     id = @user_quiz.id
 
